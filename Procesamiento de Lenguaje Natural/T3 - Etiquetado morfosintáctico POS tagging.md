@@ -66,9 +66,10 @@ Para el etiquetado morfosintáctico, los HMM son entrenados en un conjunto de da
 El objetivo de decodificación HMM es elegir la secuencia de etiquetas más probable dada la secuencia de observación de 𝑛 palabras 𝑤 𝑛1:
 
 Ecuación Final, agregando la regla de bayes y simplificando al eliminar el denominador:
+
 ![Menu](./assets/T3Screenshot_2.png)
 
-Los **etiquetadores HMM **hacen dos suposiciones que permiten simplificar estas ecuaciones aún más:
+Los **etiquetadores HMM** hacen dos suposiciones que permiten simplificar estas ecuaciones aún más:
 1. La primera es que la probabilidad de aparición de una palabra depende solo de su 
 propia etiqueta y es independiente de las palabras y etiquetas vecinas.
 2. La segunda suposición, también llamada bigrama o digrama, es que la probabilidad de una etiqueta solo depende de la etiqueta anterior, en lugar de toda la secuencia de etiquetas.
@@ -78,7 +79,7 @@ Aplicando estas suposiciones a las ecuaciones anteriores terminamos con la sigui
 ![Menu](./assets/T3Screenshot_4.png)
 
 ### Ejemplos de probabilidad de transición y probabilidad de emisión
-> Un** corpus lingüístico** es una colección de textos representativos de una lengua que se utilizan para el análisis lingüístico. Los corpus pueden estar **anotados o etiquetados** de forma que las palabras que lo conforman presentan, además, algún tipo de información lingüística.
+> Un **corpus lingüístico** es una colección de textos representativos de una lengua que se utilizan para el análisis lingüístico. Los corpus pueden estar **anotados o etiquetados** de forma que las palabras que lo conforman presentan, además, algún tipo de información lingüística.
 
 #### **Probabilidades de transición**
 Las probabilidades de transición de etiqueta 𝑃(𝑡𝑖|𝑡𝑖−1) representan la probabilidad de una etiqueta dada la etiqueta anterior. Por ejemplo, los verbos modales (etiqueta MD) como «can» (poder) son muy probablemente seguidos por un verbo en la forma base (etiqueta VB) como «run» (correr), por lo que espera que esta probabilidad sea 
