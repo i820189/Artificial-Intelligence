@@ -1,2 +1,2 @@
-# UNIR
+# Inteligencia Artificial
 Material de estudios
