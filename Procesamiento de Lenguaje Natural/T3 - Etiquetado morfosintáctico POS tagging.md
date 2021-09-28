@@ -135,6 +135,25 @@ La figura 6 muestra un esquema con las posibles etiquetas para el ejemplo anteri
 
 ![Menu](./assets/T3Screenshot_13.png)
 
-El algoritmo de Viterbi crea una matriz de probabilidades con una columna para** cada observación** 𝑡 y una fila para** cada estado** 𝑞𝑖 de la **máquina de estados finitos **(o autómata finito) que representa el HMM. Para el ejemplo, el algoritmo crea N = 5 columnas de estado, la primera para la observación de la primera palabra «Janet», la segunda para «will» y así sucesivamente hasta completar las cinco palabras que conforman la frase, tal como se muestra en la figura 8.
+El algoritmo de Viterbi crea una matriz de probabilidades con una columna para **cada observación** 𝑡 y una fila para **cada estado** 𝑞𝑖 de la **máquina de estados finitos **(o autómata finito) que representa el HMM. Para el ejemplo, el algoritmo crea N = 5 columnas de estado, la primera para la observación de la primera palabra «Janet», la segunda para «will» y así sucesivamente hasta completar las cinco palabras que conforman la frase, tal como se muestra en la figura 8.
 
 ![Menu](./assets/T3Screenshot_14.png)
+
+Hola
+
+
+------------
+ Maths Forms
+
+![formula](https://render.githubusercontent.com/render/math?math=A,%20B%20\in%20\U,%20x%20\in%20\Z)
+
+![formula](https://render.githubusercontent.com/render/math?math=\N\Z\R\Q\C)
+
+<img src="https://render.githubusercontent.com/render/math?math=\LARGE e^{i %2B\pi} =x%2B1">
+
+Generator:
+https://jsfiddle.net/8ndx694g/
+
+Formulas Latex:
+https://en.wikibooks.org/wiki/LaTeX/Mathematics
+https://www.overleaf.com/learn/latex/Mathematical_expressions
