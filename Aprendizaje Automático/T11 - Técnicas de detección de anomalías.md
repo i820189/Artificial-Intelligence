@@ -2,9 +2,46 @@
 - Aprendizaje Automático
   - Aprendizaje No Supervisado
   - Aprendizaje Supervisado
+  
 **Tipo de Problemas**
-- Clasificación
+- Clasificación Binaria
 
+**Hiperparámetros**
+- Se trata de encontrar el valor de **épsilon** que detecte todos los ejemplos de tipo anómalo. 
+
+**Evaluación**
+- En este caso como las clases están muy desbalanceadas, una buena métrica a utilizar es el cálculo de **f-measure**.
+- Los ejemplos positivos se reservan para los conjuntos de validación cruzada y para el test, en caso existan pocos de clase positiva (anomalía), muy pocos para entrenar.
+
+**Como Funciona**
+- ¿cuál es la probabilidad de que el ejemplo x sea normal?
+- Encontrar eventos anomalos, eventos con muy poca frecuencia.
+- Detectar una anomalía antes de que ocurra es muy difícil, lo que si se puede es detectar la anomalía ya registrada.
+- "Cisne Negro"
+
+**Retos**  
+- El reto es definir que es una región "normal".
+- El límite entre lo normal y lo abnormal a veces no es claro, es difuso.
+- La noción exacta de outlier es diferente para cada aplicación.
+- Disponibilidad de datos etiquetados para train/test
+- Comportamiento normal evoluciona. Por lo general el comportamiento normal no siempre es igual, sino que se modifica con el tiempo.
+
+**Aplicaciones**
+- Detección Intrusos en la red
+- Detección fraude en tarjetas / seguros
+- Diagnostico médico.
+- Procesamiento imagen / video-vigilancia (por medio de sensores)
+- Detección de tópicos novedosos en minería de textos (por ejemplo un algoritmo de detección de trending topics en twitter)
+
+**Técnicas**
+- Isolation Forest : 
+  - Es una técnica que utiliza por dentro el algoritmo de random forest .
+  - Lo que hace es, va aislando las observaciones de forma que construye un random forest y elige de forma aleatoria una variable del conjunto de datos, y ve los valores de corte máximos y mínimos para esa variable determinado en función de todo el conjunto de datos que tenemos.
+  - Técnicas utilizadapara conjunto de datos con grandes dimensiones.
+  - Creo que por default genera 10 arboles, pero se puede definir un factor de aletoriedad (rFactor = 0) Entre 0 y 1, 1 es que los arboles serán más aleatorios.
+  - Puede generar un valor de anomalía en porcentaje , mientras más alto es más anomalo.
+- Podemos utilizar técnicas de detección de anomalías o de búsqueda de outliers que sean Univariables (tienen en cuenta una variable)
+- O Técnicas de detección de anomalías sobre un espacio de multiples dimensiones.
 -------
 
 
@@ -80,6 +117,7 @@ Por tanto, multiplicamos la probabilidad de cada una de las variables y asumimos
 ![formula](https://render.githubusercontent.com/render/math?math=X_1) dado ![formula](https://render.githubusercontent.com/render/math?math=\mu_1) y ![formula](https://render.githubusercontent.com/render/math?math=\sigma_i^2) utilizando una distribución gaussiana.
 
 Por tanto, este modelo asume **independencia condicional de las variables**, aunque el algoritmo funciona si las variables son independientes o no. La fórmula anterior se puede escribir de forma compacta como:
+
 ![](assets/Screenshot_2.png)
 
 El problema de estimar esta función se conoce también con el nombre de **estimación de densidad**.
@@ -117,6 +155,55 @@ Y si pintamos el producto de ambas, obtenemos:
 ![](assets/img7.png)  
 *Gráfica 7. Distribución las variables x1 y x2 de forma conjunta. Fuente: https://es.coursera.org*
 
-En este gráfico de superficie, la altura de la superficie es la probabilidad p(x). No siempre es posible hacer este tipo de gráficos puesto que habitualmente se utilizan espacios de más de dos dimensiones para crear los sistemas de detección de anomalías. Para comprobar si un valor es anómalo se establece el parámetro épsilon a un determinado valor. Supongamos que ahora tenemos dos puntos nuevos: X3 y X4.P(x3) = 0.436, lo que nos da una probabilidad de un 43 % de que el dato sea normal y por otro lado P(x4)=0.0021, lo que nos da una probabilidad de un 0,2 % de que el dato sea normal.
 
-En este caso, el segundo ejemplo X4 se detectaría como una anomalía.
+> En este gráfico de superficie, la altura de la superficie es la probabilidad ***p(x)***. No siempre es posible hacer este tipo de gráficos puesto que habitualmente se utilizan espacios de más de dos dimensiones para crear los sistemas de detección de anomalías. Para comprobar si un valor es anómalo se establece el parámetro épsilon a un determinado valor. Supongamos que ahora tenemos dos puntos nuevos: ***X3*** y ***X4***. ***P(x3) = 0.436***, lo que nos da una probabilidad de un **43 %** de que el dato sea normal y por otro lado ***P(x4)=0.0021***, lo que nos da una probabilidad de un **0,2 %** de que el dato sea normal.  
+En este caso, el segundo ejemplo ***X4*** se detectaría como una anomalía.
+
+
+# Desarrollando y evaluando un sistema de detección de anomalías
+
+Un aspecto importante cuando se desarrolla un sistema de detección de anomalías es **cómo se realiza la evaluación utilizando una métrica objetiva**. Esta fase de evaluación es muy relevante porque suele ser habitual y necesario el tener que tomar ciertas decisiones. Estas decisiones son más sencillas de tomar si el resultado del algoritmo es un único número que demuestra que los cambios realizados mejoran o empeoran el rendimiento del sistema de detección de anomalías.
+
+Además, para desarrollar un sistema de detección de anomalías de forma rápida **es útil disponer de una métrica de evaluación.** Supongamos que disponemos de datos etiquetados sobre ejemplos anómalos y no. La evaluación puede considerar estos ejemplos para obtener una métrica de calidad del modelo.
+
+Retomando el ejemplo de los motores. Tenemos datos etiquetados de los motores donde las muestras normales las etiquetamos con 0 y las muestras anómalas con 1. El conjunto de entrenamiento es el conjunto de ejemplos. A continuación, es necesario definir el conjunto de validación cruzada para entrenamiento, el conjunto de test y, para ambos, incluimos algunos ejemplos anómalos.
+
+> Por ejemplo, podemos tener **10 000 motores buenos** y **20 motores anómalos**, lo que nos proporciona un ratio de **1-500**. Una posible división sería un conjunto de entrenamiento con 6000 ejemplos de tipo 0 (normales), **un conjunto de validación cruzada** con 2000 ejemplos de tipo 0 y 10 ejemplos de tipo 1 y **un conjunto de test** con 2000 ejemplos de tipo 0 y los otros 10 ejemplos de tipo 1.
+
+El modelo ***p(x)*** se entrena sobre los datos de entrenamiento y se prueba con los ejemplos en el conjunto de validación cruzada y de tipo test:
+
+![](assets/Screenshot_5.png)
+
+Se trata de **encontrar el valor de épsilon que detecte todos los ejemplos de tipo anómalo**. Es decir, puede verse como un problema de clasificación binaria, pero en este caso como las clases están muy desbalanceadas, una buena métrica a utilizar es el cálculo de f-measure.
+
+# Detección de anomalías vs. aprendizaje supervisado
+La principal diferencia del uso de algoritmos de detección de anomalías con respecto de los algoritmos de aprendizaje supervisado viene dada por **el número de ejemplos positivos frente a los negativos**. En el caso del aprendizaje supervisado es posible extraer patrones de los ejemplos positivos y el aprendizaje se realiza con ejemplos de las dos clases. Por otro lado, en el caso de la detección de anomalías al tener muy pocos ejemplos de la clase positiva no hay suficientes datos para «aprender» el patrón de la clase positiva. Por este motivo, **los ejemplos positivos se reservan para los conjuntos de validación cruzada y para el test.**
+
+Además de tener pocos ejemplos de la clase positiva (anomalía) hay veces en que los tipos de anomalías son muy diferentes entre sí y, por tanto, no es posible extraer un patrón determinado.
+
+Por otro lado, en el caso del aprendizaje supervisado tenemos un número razonable de ejemplos positivos y negativos. O bien, esperamos que todas las anomalías se comporten de una forma similar entre ellas.
+
+#### **Technique Isolation Forest :**
+![](assets/isolationforest.jpg)
+
+----
+
+## Lectura
+
+**Detección de anomalías en Python**  
+Scikit learn. (s. f.) Novelty and Outlier Detection.  
+En esta página se describe los métodos implementados en la librería scikit learn de Python para realizar la detección de anomalías :
+- http://scikit-learn.org/stable/modules/outlier_detection.html
+
+**Data-driven Anomay Detection**  
+Charla de Nikunj Oza en Google, dentro de la serie de charlas técnicas. El vídeo cubre 
+el trabajo del equipo de data science de la Nasa en detección de anomalías aplicadas 
+al control de tráfico aéreo.
+- https://www.youtube.com/watch?v=5mBiac_dhbs
+
+**Anomaly Detection for Payment Proccesing at Netflix**  
+Charla en Association for Computing Machinery (ACM) sobre la detección de anomalías para el procesamiento de pagos que se ha realizado en la empresa Netflix donde se discuten tanto los retos científicos de trabajar con datos de 50 millones de clientes como los retos técnicos de montar una solución con una arquitectura escalable
+- https://www.youtube.com/watch?v=xjHlu9OViVc
+
+
+
