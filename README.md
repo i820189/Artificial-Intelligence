@@ -1,8 +1,8 @@
 # Inteligencia Artificial
 Material de estudios
 
-- 📁 [Aprendizaje Automático]()
-  - 📄 [T11 - Técnicas de detección de anomalías](/)
+- 📁 [Aprendizaje Automático](/Aprendizaje%20Automático/)
+  - 📄 [T11 - Técnicas de detección de anomalías]()
   - 📜 [T11 - Ejercicio CreditCard Anomaly Detection - Python]()
   - 📜 [T11 - Ejercicio Heart Anomaly Detection - Python]()
   - 📜 [T11 - Ejercicio Planta de Oxido Anomaly Detection - R]()
