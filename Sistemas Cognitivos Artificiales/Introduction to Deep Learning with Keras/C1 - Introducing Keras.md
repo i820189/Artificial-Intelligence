@@ -55,8 +55,7 @@ It's the best moment to be learning Keras. Keras is now fully integrated into Te
 ## Feature Engineering
 Neural networks are good feature extractors, since they learn the best way to make sense of unstructured data. Previously, it was the domain expert that had to set rules based on experimentation and heuristics to extract the relevant features of data. Neural networks can learn the best features and their combination, they can perform feature engineering themselves. That's why they are so useful. But what is unstructured data?
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_6.png" />][blank]
-
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_6.png" />][blank]
 
 
 <br/>
@@ -66,7 +65,7 @@ Neural networks are good feature extractors, since they learn the best way to ma
 Unstructured data is data that is not easily put into a table. For instance, sound, Video, images, etc. It's also the type of data where performing feature engineering can be more challenging, that's why leaving this task to neural networks is a good idea.
 
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_7.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_7.png" />][blank]
 
 <br/>
 
@@ -85,21 +84,21 @@ If you are dealing with unstructured data, you don't need to interpret the resul
 ## A neural network?
 A neural network is a machine learning algorithm with the training data being the input to the input layer and the predicted value the value at the output layer.
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_8.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_8.png" />][blank]
 
 <br/>
 
 ### Parameters
 Each connection from one neuron to another has an associated weight w. Each neuron, except the input layer which just holds the input value, also has an extra weight we call the bias weight, b. During feed-forward our input gets transformed by weight multiplications and additions at each layer, the output of each neuron can also get transformed by the application of what's called an activation function.
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_10.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_10.png" />][blank]
 
 <br/>
 
 ### Gradient descent
 Learning in neural networks **consists of tuning the weights or parameters to give the desired output**. One way of achieving this is by using the famous **gradient descent algorithm**, and applying weight updates incrementally via a process known as **back-propagation**. That was a lot of theory! The code in Keras is much simpler as we will see now.
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_11.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_11.png" />][blank]
 
 <br/>
 
@@ -113,7 +112,7 @@ We will focus on the **Sequential API**. This is a simple, yet very powerful way
 Add a couple of hidden layers.  
 And finally end your model by adding an output layer. Let's go through a code example.
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_12.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_12.png" />][blank]
 
 <br/>
 
@@ -140,7 +139,7 @@ model.add(Dense(2, input_shape=(3,)))
 model.add(Dense(1))
 ```
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_13.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_13.png" />][blank]
 
 <br/>
 
@@ -161,7 +160,7 @@ model.add(Dense(2, input_shape=(3,), activation=(relu) ))
 model.add(Dense(1))
 ```
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_14.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_14.png" />][blank]
 
 <br/>
 
@@ -184,10 +183,10 @@ That's why we see that this layer has **8 parameters**:
 
 These add up to 8 different parameters.
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_15.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_15.png" />][blank]
 
 
-[<img align="center" alt="Aws" width="500px" src="../Aprendizaje%20Automático/assets/Screenshot_16.png" />][blank]
+[<img align="center" alt="Aws" width="500px" src="../../Aprendizaje%20Automático/assets/Screenshot_16.png" />][blank]
 
 <br/>
 
@@ -201,7 +200,7 @@ You will build a network that **takes two numbers as an input**, passes them thr
 
 A **non-constrained output can be obtained by avoiding setting an activation function in the output layer**. This is useful for problems like regression, when we want our output to be able to take any non-constrained value.
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_17.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_17.png" />][blank]
 
 <br/>
 
@@ -243,7 +242,7 @@ You've just created a neural network. But you're going to create a new one now, 
 
 This is the network you will be creating:
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_18.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_18.png" />][blank]
 
 <br/>
 
@@ -279,7 +278,7 @@ _________________________________________________________________
 ### Practice 3 : Build as shown!
 You will take on a final challenge before moving on to the next lesson. Build the network shown in the picture below. Prove your mastered Keras basics in no time!
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_19.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_19.png" />][blank]
 
 <br/>
 
@@ -325,7 +324,7 @@ As our model is being trained, we will **get some output showing the progress**.
 # Train your model
 model.fit(X_train, Y_train, epochs=5)
 ```
-[<img align="center" alt="Aws" width="700px" src="../Aprendizaje%20Automático/assets/Screenshot_20.png" />][blank]
+[<img align="center" alt="Aws" width="700px" src="../../Aprendizaje%20Automático/assets/Screenshot_20.png" />][blank]
 
 <br/>
 
@@ -339,7 +338,7 @@ preds = model.predict(X_test)
 # Look at the predictions
 print(preds)
 ```
-[<img align="center" alt="Aws" width="700px" src="../Aprendizaje%20Automático/assets/Screenshot_21.png" />][blank]
+[<img align="center" alt="Aws" width="700px" src="../../Aprendizaje%20Automático/assets/Screenshot_21.png" />][blank]
 
 <br/>
 
@@ -351,14 +350,14 @@ To quickly evaluate how well our model performs on unseen data we can use the mo
 model.evaluate(X_test, Y_test)
 ```
 
-[<img align="center" alt="Aws" width="700px" src="../Aprendizaje%20Automático/assets/Screenshot_22.png" />][blank]
+[<img align="center" alt="Aws" width="700px" src="../../Aprendizaje%20Automático/assets/Screenshot_22.png" />][blank]
 
 <br/>
 
 ### Exercise : The problem at hand
 Are you ready?! A meteor is approaching the earth and we want to make sure it won't take us to extinction. A group of scientists is trying to estimate the orbit by using historical data gathered about previous orbits of similar meteors.
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_23.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_23.png" />][blank]
 
 <br/>
 
@@ -371,7 +370,7 @@ Are you ready?! A meteor is approaching the earth and we want to make sure it wo
 Scientist have used this data alongside their knowledge to estimate an **80-minute orbit**, that is, an orbit from **-40 minutes to +40 minutes**. **t=0** corresponds to the time of crossing the impact region. It looks like the meteor will be close!   
 Perhaps it won't hit us, but we must make sure we are right!
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_24.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_24.png" />][blank]
 
 <br/>
 
@@ -380,7 +379,7 @@ Perhaps it won't hit us, but we must make sure we are right!
 You have data for the path a previous meteor took during a period of 20 minutes, **10 minutes before** and **10 minutes after** crossing the impact region. You will train a model on this data and extrapolate your predictions to an **80-minute** orbit to see how it compares to the scientists prediction.  
 Will your orbit be similar to that of the scientists, where we don't die just by a small bit?
 
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_25.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_25.png" />][blank]
 
 <br/>
 
@@ -443,7 +442,7 @@ twenty_min_orbit = model.predict(np.arange(-10, 11))
 # Plot the twenty minute orbit 
 plot_orbit(twenty_min_orbit)
 ```
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_26.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_26.png" />][blank]
 
 <br/>
 
@@ -456,7 +455,7 @@ eighty_min_orbit = model.predict(np.arange(-40, 41))
 # Plot the eighty minute orbit 
 plot_orbit(eighty_min_orbit)
 ```
-[<img align="center" alt="Aws" width="300px" src="../Aprendizaje%20Automático/assets/Screenshot_27.png" />][blank]
+[<img align="center" alt="Aws" width="300px" src="../../Aprendizaje%20Automático/assets/Screenshot_27.png" />][blank]
 
 <br/>
 
